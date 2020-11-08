@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url('manjoybera-bg.jpg');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-attachment: fixed;
+  background-clip: border-box;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-link {
