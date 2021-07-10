@@ -1,24 +1,19 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./styles/App.css";
+import Header from "./components/common/Header";
+import ContentWrapper from "./components/common/ContentWrapper";
+import Footer from "./components/common/Footer";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <div className="App-header">
-        <p>
-          Welcome to my site - Manjoy.
-        </p>
-	    Site is under development, till then visit the blog 
-        <a
-          className="App-link"
-          href="https://mampiaroy.in"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          mampiaroy.in
-        </a>
+        <Header />
+        <ContentWrapper />
+        <Footer />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

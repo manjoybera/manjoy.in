@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,19 +10,20 @@
 }
 
 .App-header {
-  background-image: url('manjoybera-bg.jpg');
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(5px + 2vmin);
   color: white;
   background-attachment: fixed;
   background-clip: border-box;
   background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
 }
 
 .App-link {
