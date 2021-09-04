@@ -96,8 +96,17 @@
 
 /* ------------- Footer ----------------*/
 .footerDiv {
-  height: 5vh;
+  height: 8vh;
   width: 100vw;
   font-size: calc(10px + 1vmin);
+}
+
+.githubDiv {
+  font-size: calc(5px + 1vmin);
+}
+
+.githubLink {
+  color: white;
+  text-decoration: none;
 }
 /* -------------------------------------- */
