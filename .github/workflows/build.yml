@@ -1,6 +1,7 @@
 # main workflow file
 name: Build and Push to Docker
 
+# Trigger this workflow on commit to master
 on:
   push:
     branches: [ master ]
@@ -26,7 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
+    - run: npm install --production
     - run: npm run build --production
  #  - run: npm test
 
@@ -35,3 +36,23 @@ jobs:
     name: Build Docker
     runs-on: ubuntu-latest
     needs: codebuild
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      #  Login to Docker Hub
+        - name: Docker Login
+      env: 
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      # Build Docker Image using Prebuild Image
+        - name: Build Docker Image
+      run: docker build -t manjoy.in .
+      # Push to Docker Hub
+      - name: Docker Push
+      run: docker push ${{secrets.DOCKER_USER}}/manjoy.in
