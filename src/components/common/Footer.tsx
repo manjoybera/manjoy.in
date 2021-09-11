@@ -10,6 +10,7 @@ function Footer(props: any) {
         <a
           href="https://github.com/manjoybera/manjoy.in"
           target="_blank"
+          rel="noreferrer"
           className={"githubLink"}
         >
           Github

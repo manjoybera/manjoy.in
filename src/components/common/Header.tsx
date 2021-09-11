@@ -7,7 +7,7 @@ function Header(props: any) {
       <div className="headerDivLogo"></div>
       <div className="headerDivText">
         <span className="headerDivTextCode">
-          git init <a href="">manjoy.in</a>
+          git init <a href="/#">manjoy.in</a>
         </span>
         <br />
         <span className="headerDivTextCode">git status</span>
