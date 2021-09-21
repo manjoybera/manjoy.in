@@ -66,7 +66,7 @@ jobs:
 
       # Build Docker Image using Prebuild Image
       - name: Build Docker Image
-        run: docker build -t manjoy.in .
+        run: docker build -t ${{secrets.DOCKER_USER}}/manjoy.in .
 
       # Push to Docker Hub
       - name: Docker Push
