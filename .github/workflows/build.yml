@@ -28,7 +28,14 @@ jobs:
           cache: "npm"
       - run: npm install --production
       - run: npm run build --production
-  #  - run: npm test
+      #- run: npm test
+
+      # Upload the build folder as artifacts 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: build
 
   # Build the Docker image using files generated in prev step
   dockerbuild:
@@ -40,8 +47,11 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    # Download the build artifacts
+      - name: Download production artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
 
       #  Login to Docker Hub
       - name: Docker Login
