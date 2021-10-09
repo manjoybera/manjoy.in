@@ -13,6 +13,7 @@ jobs:
   codebuild:
     name: Build Code
     runs-on: ubuntu-latest
+    environment: production
 
     strategy:
       matrix:
@@ -36,38 +37,38 @@ jobs:
           name: build-artifacts
           path: build
 
-  # Build the Docker image using files generated in prev step
-  dockerbuild:
-    name: Build Docker
-    runs-on: ubuntu-latest
-    needs: codebuild
-    permissions:
-      contents: read
-      packages: write
+  # # Build the Docker image using files generated in prev step
+  # dockerbuild:
+  #   name: Build Docker
+  #   runs-on: ubuntu-latest
+  #   needs: codebuild
+  #   permissions:
+  #     contents: read
+  #     packages: write
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
       
-      # Download the build artifacts
-      - name: Download production artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifacts
-          path: build
+  #     # Download the build artifacts
+  #     - name: Download production artifacts
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: build-artifacts
+  #         path: build
 
-      #  Login to Docker Hub
-      - name: Docker Login
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USER}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  #     #  Login to Docker Hub
+  #     - name: Docker Login
+  #       env:
+  #         DOCKER_USER: ${{secrets.DOCKER_USER}}
+  #         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  #       run: |
+  #         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-      # Build Docker Image using Prebuild Image
-      - name: Build Docker Image
-        run: docker build -t ${{secrets.DOCKER_USER}}/manjoy.in .
+  #     # Build Docker Image using Prebuild Image
+  #     - name: Build Docker Image
+  #       run: docker build -t ${{secrets.DOCKER_USER}}/manjoy.in .
 
-      # Push to Docker Hub
-      - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/manjoy.in
+  #     # Push to Docker Hub
+  #     - name: Docker Push
+  #       run: docker push ${{secrets.DOCKER_USER}}/manjoy.in

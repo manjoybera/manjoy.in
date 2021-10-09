@@ -13,7 +13,7 @@ This project can run with Docker. The Image uses NODE to build the app and NGINX
 
 Builds the Docker image as per `Dockerfile`
 
-### `docker run --rm -it -p 8080:80 manjoy.in`
+### `docker run --rm -it -p 8080:8080 manjoy.in`
 
 Runs a Docker container with host port 8080 pointed to docker 80.
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
