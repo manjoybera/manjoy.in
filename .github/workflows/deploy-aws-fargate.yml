@@ -24,7 +24,7 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: Deploy to Amazon ECS
+name: Deploy
 
 on: 
   workflow_dispatch:
@@ -35,7 +35,8 @@ on:
 env:
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: manjoy.in                # set this to your Amazon ECR repository name
-  ECS_SERVICE: manjoy-fargate-cluster-service                 # set this to your Amazon ECS service name
+  #ECS_SERVICE: manjoy-fargate-cluster-service                 # set this to your Amazon ECS service name
+  ECS_SERVICE: manjoy-fargate-service-withloadbalancer 
   ECS_CLUSTER: manjoy-fargate-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/manjoy-fargate-taskdefinition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json

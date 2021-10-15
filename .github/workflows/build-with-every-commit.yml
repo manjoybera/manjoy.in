@@ -1,5 +1,5 @@
 # main workflow file
-name: Build and Push to Docker
+name: Build
 
 # Trigger this workflow on commit to master
 on:
