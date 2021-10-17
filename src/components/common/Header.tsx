@@ -12,7 +12,7 @@ function Header(props: any) {
         <br />
         <span className="headerDivTextCode">git status</span>
         <div className="headerDivTextCodeResult">
-          &gt; Manjoy Kumar Bera <br /> &gt; Full Stack Developer (.NET)
+          &gt; Manjoy Kumar Bera <br /> &gt; (Testing Cloudfront Invalidation)
         </div>
       </div>
     </div>

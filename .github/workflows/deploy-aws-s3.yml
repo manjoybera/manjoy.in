@@ -41,3 +41,6 @@ jobs:
 
     - name: Deploy static site to S3
       run: aws s3 sync ./build ${{ env.S3_BUCKET }} --delete
+
+    - name: Invalidate Cloudfront Cache
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
