@@ -1,8 +1,7 @@
 import React from "react";
-import "styles/Content.css";
+import "styles/content.css";
 
-function Contact(props: any) {
+export function Contact(props: any) {
   return <div className="aboutDiv">Contact Me</div>;
 }
 
-export default Contact;

@@ -1,7 +1,7 @@
 import React from "react";
-import "styles/Content.css";
+import "styles/content.css";
 
-function Home(props: any) {
+export function Home(props: any) {
   return (
     <div className="homeDiv">
       Hey, Thanks for dropping by. Working on some inspirations to update this
@@ -10,4 +10,3 @@ function Home(props: any) {
   );
 }
 
-export default Home;

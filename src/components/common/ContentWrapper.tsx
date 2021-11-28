@@ -1,10 +1,12 @@
 import React from "react";
-import "styles/Content.css";
-import NavigationBar from "./NavigationBar";
+import "styles/content.css";
+import {NavigationBar} from "./NavigationBar";
 import { Route, Switch } from "react-router";
-import Home from "components/pages/Home";
-import Contact from "components/pages/Contact";
-import About from "components/pages/About";
+import { Home } from "components/pages/Home";
+import { Contact } from "components/pages/Contact";
+import { About } from "components/pages/About";
+import { Tools } from "components/pages/Tools";
+import {Calculator} from "components/tools/Calculator"
 
 function ContentWrapper(props: any) {
   return (
@@ -15,7 +17,10 @@ function ContentWrapper(props: any) {
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
-          {/* <Route path="/post/:slug" component={Post} /> */}
+          <Route path="/tools" component={Tools} />
+          {/* {ToolsMap.map((tool) => {
+            <Route path={tool.Path} component={tool.Component} />;
+          })}  */}
         </Switch>
       </div>
     </div>

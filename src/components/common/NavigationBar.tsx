@@ -1,8 +1,8 @@
 import React from "react";
-import "styles/Content.css";
+import "styles/content.css";
 import { NavLink } from "react-router-dom";
 
-function NavigationBar(props: any) {
+export function NavigationBar(props: any) {
   return (
     <div className="navigationBarDiv">
       <NavLink
@@ -29,8 +29,14 @@ function NavigationBar(props: any) {
       >
         Contact
       </NavLink>
+      <NavLink
+        to="/tools"
+        className="navigationItem"
+        //exact={true}
+        activeClassName="active"
+      >
+        Tools
+      </NavLink>
     </div>
   );
 }
-
-export default NavigationBar;
