@@ -2,8 +2,6 @@ import { Route, Switch } from "react-router";
 import { ToolsMap } from "constants/ToolsConstants";
 import { NavLink } from "react-router-dom";
 import {Calculator} from "components/tools/Calculator"
-import "styles/content.css";
-
 export function Tools(props: any) {
   return (
     <>

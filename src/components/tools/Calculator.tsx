@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+
 
 export function Calculator(props: any) {
-  return <div>Calc</div>;
+  
+  return (
+    <div>
+      Calc
+      
+    </div>
+  );
 }
-

@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 200ms linear;
+  overflow-x: hidden;
+}
+
+div,
+textarea,
+button {
+  transition: all 100ms linear;
+  transition-property: background, border;
+}
+
+body,
+body * {
+  scrollbar-width: 0.5rem;
+  scrollbar-color: lightgrey;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: lightgrey;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 6px;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import "styles/content.css";
 
 export function Home(props: any) {
   return (
