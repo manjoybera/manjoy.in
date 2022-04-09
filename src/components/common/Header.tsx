@@ -1,6 +1,9 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { HeaderConst } from "constants/common";
+import { DarkMode, WbSunny } from "styled-icons/material";
+import { useGlobalContext } from "contexts/store";
+import { actionType } from "contexts/actions";
 
 // CSS Styles
 const headerDivCss = {
@@ -13,6 +16,7 @@ const headerDivCss = {
 
 const headerDivLogoCss = {
   flexGrow: 1,
+  paddingLeft: "2rem",
 };
 
 const headerDivText = {
@@ -40,6 +44,15 @@ const headerDivTextCodeResult = {
 function Header(props: any) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  const { state, dispatch } = useGlobalContext();
+
+  const DarkModeIconCss = {
+    color: state.Theme.TextColor,
+    height: "2rem",
+    margin: "5px",
+    alignSelf: "flex-start",
+    cursor: "pointer",
+  };
 
   return (
     <div
@@ -49,7 +62,16 @@ function Header(props: any) {
           : headerDivCss
       }
     >
-      <div style={headerDivLogoCss}></div>
+      <div
+        style={headerDivLogoCss}
+        onClick={() => dispatch({ type: actionType.ToggleDarkTheme })}
+      >
+        {state.Theme.ShowDarkTheme ? (
+          <WbSunny style={DarkModeIconCss} className={"DarkModeIcon"} />
+        ) : (
+          <DarkMode style={DarkModeIconCss} className={"DarkModeIcon"} />
+        )}
+      </div>
       <div style={headerDivText}>
         <div style={headerDivTextCode}>
           git init <a href="/#">manjoy.in</a>

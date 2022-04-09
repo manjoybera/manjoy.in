@@ -21,7 +21,7 @@ function App() {
     justifyContent: "center",
     fontSize: "1rem",
     color: state.Theme.TextColor,
-    height: "110vh",
+    ///height: "110vh",
   } as React.CSSProperties; // Add this if there is typecheck issue with CSS
 
   return (

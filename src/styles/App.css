@@ -1,5 +1,7 @@
 /* Navigation Hover CSS */
-.navigationItem:hover {
-  transform: scale(1.1);
+.navigationItem:hover,
+.navigationIcon:hover,
+.DarkModeIcon:hover {
+  transform: scale(1.05);
   transition: 0.3s ease-out;
 }

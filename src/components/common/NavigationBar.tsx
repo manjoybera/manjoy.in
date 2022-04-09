@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useGlobalContext } from "../../contexts/store";
+import { useGlobalContext } from "contexts/store";
+import { Navigation } from "styled-icons/fluentui-system-filled";
+import { useMediaQuery } from "react-responsive";
 
 const navigationBarDivCss = {
   minWidth: "10rem",
@@ -17,6 +19,9 @@ const navigationBarDivCss = {
 
 export function NavigationBar(props: any) {
   const { state } = useGlobalContext();
+  const [showMenu, setShowmenu] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
 
   const navigationItemCss = {
     height: "3rem",
@@ -32,49 +37,49 @@ export function NavigationBar(props: any) {
     width: "100%",
   };
 
+  const NavigationIconCss = {
+    color: state.Theme.TextColor,
+    height: "2rem",
+    margin: "5px",
+    alignSelf: "flex-start",
+    cursor: "pointer",
+  };
+
+  const MenuItems = state.App.Sections.map((section: any) => (
+    <NavLink
+      to={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
+      style={navigationItemCss}
+      className={"navigationItem"}
+      exact={section.SectionName == "@Me"}
+      activeStyle={{
+        backgroundColor: "#bcd346",
+      }}
+    >
+      {section.SectionName}
+    </NavLink>
+  ));
+
   return (
     <div style={navigationBarDivCss}>
-      <NavLink
-        to="/"
-        style={navigationItemCss}
-        className={"navigationItem"}
-        exact={true}
-        activeStyle={{
-          backgroundColor: "#bcd346",
-        }}
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="/about"
-        style={navigationItemCss}
-        className={"navigationItem"}
-        activeStyle={{
-          backgroundColor: "#bcd346",
-        }}
-      >
-        About
-      </NavLink>
-      <NavLink
-        to="/contact"
-        style={navigationItemCss}
-        className={"navigationItem"}
-        activeStyle={{
-          backgroundColor: "#bcd346",
-        }}
-      >
-        Contact
-      </NavLink>
-      <NavLink
-        to="/tools"
-        style={navigationItemCss}
-        className={"navigationItem"}
-        activeStyle={{
-          backgroundColor: "#bcd346",
-        }}
-      >
-        Tools
-      </NavLink>
+      {isTabletOrMobile && isPortrait ? (
+        showMenu ? (
+          <>
+            <Navigation
+              style={NavigationIconCss}
+              className={"navigationIcon"}
+              onClick={() => setShowmenu(false)}
+            />
+            {MenuItems}{" "}
+          </>
+        ) : (
+          <Navigation
+            style={NavigationIconCss}
+            onClick={() => setShowmenu(true)}
+          />
+        )
+      ) : (
+        MenuItems
+      )}
     </div>
   );
 }

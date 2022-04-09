@@ -1,11 +1,7 @@
 import React from "react";
 import { NavigationBar } from "./NavigationBar";
 import { Route, Switch } from "react-router";
-import { Home } from "components/pages/Home";
-import { Contact } from "components/pages/Contact";
-import { About } from "components/pages/About";
-import { Tools } from "components/pages/Tools";
-import { Calculator } from "components/tools/Calculator";
+import { GenericPage } from "components/pages/GenericPage";
 import { useMediaQuery } from "react-responsive";
 import { useGlobalContext } from "../../contexts/store";
 
@@ -28,7 +24,6 @@ function ContentWrapper(props: any) {
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "flex-start",
-    //minHeight: "70vh",
     backgroundImage: `radial-gradient(
         rgba(40, 44, 52, 0.5) -50%,
         ${state.Theme.BackgroundColor} 68%
@@ -37,8 +32,18 @@ function ContentWrapper(props: any) {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     padding: "2rem",
-    minHeight: isTabletOrMobile && isPortrait ? "unset" : "70vh",
+    minHeight: isTabletOrMobile && isPortrait ? "80vh" : "70vh",
   };
+
+  const routeSwitches = state.App.Sections.map((section: any) => (
+    <Route
+      path={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
+      exact={section.SectionName == "@Me"}
+      render={(props) => (
+        <GenericPage SectionNane={section.SectionName} {...props} />
+      )}
+    />
+  ));
 
   return (
     <div
@@ -55,15 +60,7 @@ function ContentWrapper(props: any) {
     >
       <NavigationBar />
       <div style={contentPlaceholderCss}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/tools" component={Tools} />
-          {/* {ToolsMap.map((tool) => {
-            <Route path={tool.Path} component={tool.Component} />;
-          })}  */}
-        </Switch>
+        <Switch>{routeSwitches}</Switch>
       </div>
     </div>
   );
