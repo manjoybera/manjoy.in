@@ -42,17 +42,14 @@ function ContentWrapper(props: any) {
   const routeSwitches = (sections: Array<any>) =>
     sections.map((section: any) => (
       <Route
-        path={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
+        path={section.SectionName === "@Me" ? "/" : "/" + section.SectionName}
         element={<GenericPage SectionNane={section.SectionName} {...props} />}
       />
     ));
 
   useEffect(() => {
     fetch(ServiceUrl.SectionUrl)
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
+      .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
@@ -67,6 +64,7 @@ function ContentWrapper(props: any) {
           dispatch({ type: actionType.SetAppError, payload: error });
         }
       );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

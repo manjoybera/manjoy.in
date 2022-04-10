@@ -47,7 +47,7 @@ export function NavigationBar(props: any) {
 
   const MenuItems = state.App.Sections.map((section: any) => (
     <NavLink
-      to={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
+      to={section.SectionName === "@Me" ? "/" : "/" + section.SectionName}
       style={({ isActive }) => {
         return isActive
           ? { ...navigationItemCss, backgroundColor: "#bcd346" }

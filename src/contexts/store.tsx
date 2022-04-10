@@ -52,6 +52,7 @@ export const StoreProvider = ({
       state,
       dispatch: setCurrentData,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]
   );
 
