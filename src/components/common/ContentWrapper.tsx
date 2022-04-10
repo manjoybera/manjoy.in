@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationBar } from "./NavigationBar";
-import { Route, Switch } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import { GenericPage } from "components/pages/GenericPage";
 import { useMediaQuery } from "react-responsive";
-import { useGlobalContext } from "../../contexts/store";
+import { useGlobalContext } from "contexts/store";
+import { ServiceUrl } from "constants/serviceurl";
+import { actionType } from "contexts/actions";
 
 // CSS Styles
 const contentWrapperDivCss = {
@@ -17,13 +19,15 @@ const contentWrapperDivCss = {
 function ContentWrapper(props: any) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  const { state } = useGlobalContext();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { state, dispatch } = useGlobalContext();
 
   const contentPlaceholderCss = {
     flexGrow: 1,
-    display: "inline-flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    // alignItems: "center",
     backgroundImage: `radial-gradient(
         rgba(40, 44, 52, 0.5) -50%,
         ${state.Theme.BackgroundColor} 68%
@@ -33,17 +37,37 @@ function ContentWrapper(props: any) {
     backgroundSize: "cover",
     padding: "2rem",
     minHeight: isTabletOrMobile && isPortrait ? "80vh" : "70vh",
-  };
+  } as React.CSSProperties;
 
-  const routeSwitches = state.App.Sections.map((section: any) => (
-    <Route
-      path={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
-      exact={section.SectionName == "@Me"}
-      render={(props) => (
-        <GenericPage SectionNane={section.SectionName} {...props} />
-      )}
-    />
-  ));
+  const routeSwitches = (sections: Array<any>) =>
+    sections.map((section: any) => (
+      <Route
+        path={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
+        element={<GenericPage SectionNane={section.SectionName} {...props} />}
+      />
+    ));
+
+  useEffect(() => {
+    fetch(ServiceUrl.SectionUrl)
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then(
+        (result) => {
+          setIsLoaded(true);
+
+          // Set the Sections
+          dispatch({ type: actionType.SetAppSections, payload: result });
+        },
+        (error) => {
+          setIsLoaded(true);
+
+          // Set the error message
+          dispatch({ type: actionType.SetAppError, payload: error });
+        }
+      );
+  }, []);
 
   return (
     <div
@@ -58,10 +82,22 @@ function ContentWrapper(props: any) {
           : contentWrapperDivCss
       }
     >
-      <NavigationBar />
-      <div style={contentPlaceholderCss}>
-        <Switch>{routeSwitches}</Switch>
-      </div>
+      {isLoaded ? (
+        <>
+          <NavigationBar />
+          <div style={contentPlaceholderCss}>
+            <Routes>{routeSwitches(state.App.Sections)}</Routes>
+          </div>
+        </>
+      ) : (
+        <div
+          style={{
+            minHeight: isTabletOrMobile && isPortrait ? "80vh" : "70vh",
+          }}
+        >
+          Loading Portfolio...
+        </div>
+      )}
     </div>
   );
 }

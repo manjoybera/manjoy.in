@@ -42,7 +42,7 @@ export const StoreProvider = ({
     // Use current stae if not provided
     setState({
       type: params.type,
-      payload: Object.assign({}, params.payload),
+      payload: params.payload,
     });
   };
 

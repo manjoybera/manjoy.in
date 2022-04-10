@@ -8,11 +8,11 @@ import { StoreProvider } from "./contexts/store";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StoreProvider>
         <App />
-      </BrowserRouter>
-    </StoreProvider>
+      </StoreProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

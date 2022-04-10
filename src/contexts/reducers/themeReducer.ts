@@ -4,7 +4,7 @@ import { ActionDispatchType } from "contexts/types";
 export const initialThemeState = {
   ShowDarkTheme: true,
   TextColor: "white",
-  BackgroundColor: "282c34",
+  BackgroundColor: "#282c34",
 };
 
 export const themeReducer = (state: any, action: ActionDispatchType) => {

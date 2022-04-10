@@ -10,7 +10,7 @@ const navigationBarDivCss = {
   justifyContent: "flex-start",
   alignItems: "center",
   flexDirection: "column",
-  padding: "2rem",
+  padding: "2rem 2rem 0",
 } as React.CSSProperties;
 
 // const navigationItem.active = {
@@ -48,12 +48,12 @@ export function NavigationBar(props: any) {
   const MenuItems = state.App.Sections.map((section: any) => (
     <NavLink
       to={section.SectionName == "@Me" ? "/" : "/" + section.SectionName}
-      style={navigationItemCss}
-      className={"navigationItem"}
-      exact={section.SectionName == "@Me"}
-      activeStyle={{
-        backgroundColor: "#bcd346",
+      style={({ isActive }) => {
+        return isActive
+          ? { ...navigationItemCss, backgroundColor: "#bcd346" }
+          : navigationItemCss;
       }}
+      className={"navigationItem"}
     >
       {section.SectionName}
     </NavLink>

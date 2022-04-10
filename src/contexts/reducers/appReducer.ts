@@ -1,10 +1,13 @@
 import { actionType } from "contexts/actions";
 import { ActionDispatchType } from "contexts/types";
-import { OfflineData } from "constants/serviceurl";
 
 export const initialAppState = {
   ShowNavigation: true,
-  Sections: OfflineData.Sections,
+  Sections: [],
+  Experience: [],
+  Projects: [],
+  Contacts: [],
+  Error: {},
 };
 
 export const appReducer = (state: any, action: ActionDispatchType) => {
@@ -12,6 +15,21 @@ export const appReducer = (state: any, action: ActionDispatchType) => {
   switch (action.type) {
     case actionType.ToggleNavigation:
       newState = { ...newState, ShowNavigation: !newState.ShowNavigation };
+      break;
+    case actionType.SetAppSections:
+      newState = { ...newState, Sections: action.payload };
+      break;
+    case actionType.SetExperience:
+      newState = { ...newState, Experience: action.payload };
+      break;
+    case actionType.SetProjects:
+      newState = { ...newState, Projects: action.payload };
+      break;
+    case actionType.SetContacts:
+      newState = { ...newState, Contacts: action.payload };
+      break;
+    case actionType.SetAppError:
+      newState = { ...newState, Error: action.payload };
       break;
   }
   return newState;

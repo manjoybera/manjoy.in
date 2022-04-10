@@ -4,4 +4,9 @@ export const actionType = {
 
   // App Actions
   ToggleNavigation: "ToggleNavigation",
+  SetAppSections: "SetAppSections",
+  SetExperience: "SetExperience",
+  SetProjects: "SetProjects",
+  SetContacts: "SetContacts",
+  SetAppError: "SetAppError",
 };
