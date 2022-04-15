@@ -55,14 +55,13 @@ export function ExperienceCard({ experience }: any) {
     experience.JobSkills &&
     experience.JobSkills.length > 50 ? (
       <>
-        {experience.JobSkills.substring(0, 50) + "... "}
-        <a
+        {experience.JobSkills.substring(0, 100) + "... "}
+        <span
           onClick={() => setExpandSkills(true)}
-          href="javascript:void(0);"
-          style={experiencePeriodCss}
+          style={{ textDecoration: "underline", cursor: "pointer" }}
         >
           see more
-        </a>
+        </span>
       </>
     ) : (
       experience.JobSkills
@@ -121,13 +120,12 @@ export function ProjectCard({ project }: any) {
     project.ProjectDescription.length > 50 ? (
       <>
         {project.ProjectDescription.substring(0, 100) + "... "}
-        <a
+        <span
           onClick={() => setExpandDescription(true)}
-          href="javascript:void(0);"
-          style={descriptionCss}
+          style={{ textDecoration: "underline", cursor: "pointer" }}
         >
           see more
-        </a>
+        </span>
       </>
     ) : (
       project.ProjectDescription
