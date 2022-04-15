@@ -7,6 +7,8 @@ import { useGlobalContext } from "contexts/store";
 import { ServiceUrl } from "constants/serviceurl";
 import { actionType } from "contexts/actions";
 import { ErrorDiv } from "./ErrorDiv";
+import { ErrorBoundary } from "components/common/ErrorBoundary";
+import { SectionTypes } from "constants/common";
 
 // CSS Styles
 const contentWrapperDivCss = {
@@ -42,7 +44,11 @@ export function ContentWrapper(props: any) {
   const routeSwitches = (sections: Array<any>) =>
     sections.map((section: any) => (
       <Route
-        path={section.SectionName === "@Me" ? "/" : "/" + section.SectionName}
+        path={
+          section.SectionName === SectionTypes.Home
+            ? "/"
+            : "/" + section.SectionName
+        }
         element={<GenericPage SectionNane={section.SectionName} {...props} />}
         key={section.SectionName}
       />
@@ -84,13 +90,15 @@ export function ContentWrapper(props: any) {
       <>
         <NavigationBar isLoaded={isLoaded} />
         <div style={contentPlaceholderCss}>
-          {isLoaded && state.App.Sections.length > 0 ? (
-            <Routes>{routeSwitches(state.App.Sections)}</Routes>
-          ) : isLoaded ? (
-            <ErrorDiv />
-          ) : (
-            <GenericPage isLoaded={isLoaded} />
-          )}
+          <ErrorBoundary>
+            {isLoaded && state.App.Sections.length > 0 ? (
+              <Routes>{routeSwitches(state.App.Sections)}</Routes>
+            ) : isLoaded ? (
+              <ErrorDiv />
+            ) : (
+              <GenericPage isLoaded={isLoaded} />
+            )}
+          </ErrorBoundary>
         </div>
       </>
     </div>

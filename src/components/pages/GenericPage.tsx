@@ -1,12 +1,11 @@
 import React from "react";
 import { useGlobalContext } from "contexts/store";
-// import { actionType } from "contexts/actions";
-// import { ProjectTypes } from "constants/serviceurl";
-// import { Contact } from "components/pages/Contact";
-// import { About } from "components/pages/About";
-// import { Calculator } from "components/tools/Calculator";
 import ReactMarkdown from "react-markdown";
 import { ContentLoadingPlaceholder } from "components/common/ContentLoadingPlaceholder";
+import { Experience } from "./Experience";
+import { Project } from "./Project";
+import { Contact } from "./Contact";
+import { SectionTypes } from "constants/common";
 
 export function GenericPage(props: any) {
   const { state } = useGlobalContext();
@@ -18,7 +17,12 @@ export function GenericPage(props: any) {
     // <div style={{ whiteSpace: "pre-line" }}>{sectionData.SectionContent}</div>
 
     props.isLoaded || props.SectionNane ? (
-      <ReactMarkdown>{sectionData.SectionContent}</ReactMarkdown>
+      <>
+        <ReactMarkdown>{sectionData.SectionContent}</ReactMarkdown>
+        {props.SectionNane === SectionTypes.Experience ? <Experience /> : ""}
+        {props.SectionNane === SectionTypes.Projects ? <Project /> : ""}
+        {props.SectionNane === SectionTypes.Contact ? <Contact /> : ""}
+      </>
     ) : (
       <ContentLoadingPlaceholder />
     )

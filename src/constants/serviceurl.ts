@@ -1,13 +1,8 @@
 export const ServiceUrl = {
-  SectionUrl: "https://api.manjoy.in/api/portfolio/sections",
-  ExperienceUrl: "https://api.manjoy.in/api/portfolio/experience",
-  ProjectsUrl: "https://api.manjoy.in/api/portfolio/projects",
-  ContsactsUrl: "https://api.manjoy.in/api/portfolio/contacts",
-};
-
-export const ProjectTypes = {
-  Work: "Work",
-  Personal: "Other projects",
+  SectionUrl: "https://api.manjoy.in/api/portfolio/sections.json",
+  ExperienceUrl: "https://api.manjoy.in/api/portfolio/experience.json",
+  ProjectsUrl: "https://api.manjoy.in/api/portfolio/projects.json",
+  ContsactsUrl: "https://api.manjoy.in/api/portfolio/contacts.json",
 };
 
 // export const OfflineData = {

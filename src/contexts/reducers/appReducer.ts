@@ -1,5 +1,6 @@
 import { actionType } from "contexts/actions";
 import { ActionDispatchType } from "contexts/types";
+import { SectionTypes } from "constants/common";
 
 export const initialAppState = {
   ShowNavigation: true,
@@ -8,7 +9,7 @@ export const initialAppState = {
   Projects: [],
   Contacts: [],
   Error: {},
-  ActiveSectionName: "@Me",
+  ActiveSectionName: SectionTypes.Home,
 };
 
 export const appReducer = (state: any, action: ActionDispatchType) => {

@@ -6,6 +6,11 @@
   transition: 0.3s ease-out;
 }
 
+.Card:hover {
+  transform: scale(1.01);
+  transition: 0.3s ease-out;
+}
+
 @keyframes placeHolderShimmer {
   0% {
     background-position: -70vw 0;
