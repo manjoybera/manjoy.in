@@ -41,7 +41,7 @@ const headerDivTextCodeResult = {
   font: "16px ui-monospace, SFMono-Regular, SF Mono, Consolas, Liberation Mono Menlo, monospace",
 } as React.CSSProperties;
 
-function Header(props: any) {
+export function Header(props: any) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const { state, dispatch } = useGlobalContext();

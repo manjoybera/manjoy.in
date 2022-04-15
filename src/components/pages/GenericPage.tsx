@@ -6,6 +6,7 @@ import { useGlobalContext } from "contexts/store";
 // import { About } from "components/pages/About";
 // import { Calculator } from "components/tools/Calculator";
 import ReactMarkdown from "react-markdown";
+import { ContentLoadingPlaceholder } from "components/common/ContentLoadingPlaceholder";
 
 export function GenericPage(props: any) {
   const { state } = useGlobalContext();
@@ -15,6 +16,11 @@ export function GenericPage(props: any) {
   )[0];
   return (
     // <div style={{ whiteSpace: "pre-line" }}>{sectionData.SectionContent}</div>
-    <ReactMarkdown>{sectionData.SectionContent}</ReactMarkdown>
+
+    props.isLoaded || props.SectionNane ? (
+      <ReactMarkdown>{sectionData.SectionContent}</ReactMarkdown>
+    ) : (
+      <ContentLoadingPlaceholder />
+    )
   );
 }

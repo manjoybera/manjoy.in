@@ -1,10 +1,10 @@
 # Getting Started
 
+A potfolio application bootstrapped with Create React App and loads Profile data from API. The app uses multiple Context API with (REDUX style) reducers for state management, Responsive UI and Themes. It supports multiple serverless deployment models including Docker + NGinX + AWS Fargate and AWS Cloudfront + S3
+
+[![Build](https://github.com/manjoybera/manjoy.in/actions/workflows/build-with-every-commit.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/build-with-every-commit.yml) [![Deploy to S3](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-s3.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-s3.yml) [![Deploy](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-fargate.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-fargate.yml)
+
 Head on to [https://manjoy.in](https://manjoy.in) to see it live.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Dockerized.
-
-[![Build](https://github.com/manjoybera/manjoy.in/actions/workflows/build-with-every-commit.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/build-with-every-commit.yml) [![Deploy to S3](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-s3.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-s3.yml)[![Deploy](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-fargate.yml/badge.svg)](https://github.com/manjoybera/manjoy.in/actions/workflows/deploy-aws-fargate.yml)
 
 ## Available Scripts
 This project can run with Docker. The Image uses NODE to build the app and NGINX to serve the webpage

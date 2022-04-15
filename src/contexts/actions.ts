@@ -9,4 +9,5 @@ export const actionType = {
   SetProjects: "SetProjects",
   SetContacts: "SetContacts",
   SetAppError: "SetAppError",
+  SetActiveSectionName: "SetActiveSectionName",
 };

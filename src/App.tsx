@@ -1,9 +1,9 @@
 import React from "react";
 import "styles/global.css";
 import "styles/content.css";
-import Header from "./components/common/Header";
-import ContentWrapper from "./components/common/ContentWrapper";
-import Footer from "./components/common/Footer";
+import { Header } from "./components/common/Header";
+import { ContentWrapper } from "./components/common/ContentWrapper";
+import { Footer } from "./components/common/Footer";
 import { useGlobalContext } from "./contexts/store";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";

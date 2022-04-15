@@ -8,6 +8,7 @@ export const initialAppState = {
   Projects: [],
   Contacts: [],
   Error: {},
+  ActiveSectionName: "@Me",
 };
 
 export const appReducer = (state: any, action: ActionDispatchType) => {
@@ -30,6 +31,9 @@ export const appReducer = (state: any, action: ActionDispatchType) => {
       break;
     case actionType.SetAppError:
       newState = { ...newState, Error: action.payload };
+      break;
+    case actionType.SetActiveSectionName:
+      newState = { ...newState, ActiveSectionName: action.payload };
       break;
   }
   return newState;

@@ -20,7 +20,7 @@ const githubLinkCss = {
   color: "grey",
 };
 
-function Footer(props: any) {
+export function Footer(props: any) {
   return (
     <div style={footerDivCss}>
       Made with ❤ in India. © {new Date().getFullYear()} Manjoy Bera

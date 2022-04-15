@@ -5,3 +5,40 @@
   transform: scale(1.05);
   transition: 0.3s ease-out;
 }
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -70vw 0;
+  }
+  100% {
+    background-position: 70vw 0;
+  }
+}
+
+@keyframes navigationSlider {
+  0% {
+    transform: translateY(-3rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animated-background {
+  animation-name: placeHolderShimmer;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background: linear-gradient(134deg, #eeeeee 7%, #bbbbbb 51%, #eeeeee 81%);
+  background-size: 800px 104px;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin: 5px;
+}
+
+.navigationItem {
+  animation: 0.3s navigationSlider ease-out;
+}

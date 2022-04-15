@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import { useGlobalContext } from "contexts/store";
 import { ServiceUrl } from "constants/serviceurl";
 import { actionType } from "contexts/actions";
+import { ErrorDiv } from "./ErrorDiv";
 
 // CSS Styles
 const contentWrapperDivCss = {
@@ -16,7 +17,7 @@ const contentWrapperDivCss = {
   width: "100vw",
 };
 
-function ContentWrapper(props: any) {
+export function ContentWrapper(props: any) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,7 +28,6 @@ function ContentWrapper(props: any) {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    // alignItems: "center",
     backgroundImage: `radial-gradient(
         rgba(40, 44, 52, 0.5) -50%,
         ${state.Theme.BackgroundColor} 68%
@@ -44,6 +44,7 @@ function ContentWrapper(props: any) {
       <Route
         path={section.SectionName === "@Me" ? "/" : "/" + section.SectionName}
         element={<GenericPage SectionNane={section.SectionName} {...props} />}
+        key={section.SectionName}
       />
     ));
 
@@ -80,22 +81,18 @@ function ContentWrapper(props: any) {
           : contentWrapperDivCss
       }
     >
-      {isLoaded ? (
-        <>
-          <NavigationBar />
-          <div style={contentPlaceholderCss}>
+      <>
+        <NavigationBar isLoaded={isLoaded} />
+        <div style={contentPlaceholderCss}>
+          {isLoaded && state.App.Sections.length > 0 ? (
             <Routes>{routeSwitches(state.App.Sections)}</Routes>
-          </div>
-        </>
-      ) : (
-        <div
-          style={{
-            minHeight: isTabletOrMobile && isPortrait ? "80vh" : "70vh",
-          }}
-        >
-          Loading Portfolio...
+          ) : isLoaded ? (
+            <ErrorDiv />
+          ) : (
+            <GenericPage isLoaded={isLoaded} />
+          )}
         </div>
-      )}
+      </>
     </div>
   );
 }
