@@ -6,6 +6,9 @@ A potfolio application bootstrapped with Create React App and loads Profile data
 
 Head on to [https://manjoy.in](https://manjoy.in) to see it live.
 
+![image](https://user-images.githubusercontent.com/20384982/164910237-8eea07db-333c-4ba2-a99a-036df82a03eb.png)
+
+
 ## Available Scripts
 This project can run with Docker. The Image uses NODE to build the app and NGINX to serve the webpage
 
